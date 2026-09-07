@@ -1,0 +1,64 @@
+# ──────────────────────────────────────────────────────────
+#  .gitignore — Airline Ticket Reservation System
+# ──────────────────────────────────────────────────────────
+
+# ── Environment & Secrets ─────────────────────────────────
+.env
+*.env.local
+*.env.*.local
+mvp_blueprint.md
+.agents/*.md
+AGENTS.md
+report-proof/
+
+# ── Node.js ──────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# ── Build outputs ─────────────────────────────────────────
+dist/
+build/
+.vite/
+*.tsbuildinfo
+
+# ── Python (virtual env from .venv) ──────────────────────
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+
+# ── Logs ─────────────────────────────────────────────────
+logs/
+*.log
+
+# ── OS-generated files ────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Editor & IDE ─────────────────────────────────────────
+.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ── Docker (keep docker-compose.yml tracked) ─────────────
+# docker-compose.override.yml is local-only if you create one
+docker-compose.override.yml
+docker-compose.yml
+
+# ── PostgreSQL dumps ──────────────────────────────────────
+*.sql.bak
+*.dump
+
+# ── Test output ───────────────────────────────────────────
+coverage/
+.nyc_output/

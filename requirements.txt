@@ -1,0 +1,15 @@
+#Backend dependencies
+express
+pg
+ioredis
+kafkajs
+jsonwebtoken
+bcryptjs
+dotenv
+cors
+
+#Frontend dependencies
+react
+react-dom
+react-router-dom
+vite
