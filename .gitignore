@@ -7,7 +7,7 @@
 *.env.local
 *.env.*.local
 mvp_blueprint.md
-.agents/skills/airline-reservation-system/*.md
+.agents/
 AGENTS.md
 report-proof/
 
