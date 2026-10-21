@@ -105,7 +105,7 @@ Most CRUD apps stop at “insert a row.” This one deliberately shows the hard 
 flowchart LR
     B[Browser<br/>React 19 SPA] -->|"/api/* via Vite proxy"| E[Express 5 API<br/>port 3001]
     E -->|"SQL / transactions"| P[(PostgreSQL 16<br/>airline_ticketing_db)]
-    E -->|"SET NX / MGET / DEL"| R[(Redis 8<br/>hold:{seat_id})]
+    E -->|"SET NX / MGET / DEL"| R[(Redis 8<br/>hold:seat_id)]
     E -->|"publishEvent()"| K[(Kafka 7.6)]
     K --> C[Background consumer<br/>logs events]
     P -->|"trg_promote_waitlist"| W[(waitlist)]
