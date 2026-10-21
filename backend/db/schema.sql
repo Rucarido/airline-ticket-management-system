@@ -218,6 +218,7 @@ CREATE TABLE passengers (
     passport_num    VARCHAR(20),                 -- optional for MVP demo
     loyalty_tier    loyalty_tier    NOT NULL DEFAULT 'none',
     accessibility   BOOLEAN         NOT NULL DEFAULT FALSE,
+    created_at      TIMESTAMPTZ     NOT NULL DEFAULT NOW(),
 
     -- Email must be unique — it's the login identifier
     CONSTRAINT uq_passengers_email UNIQUE (email)
@@ -265,12 +266,14 @@ CREATE TABLE bookings (
     booked_at       TIMESTAMPTZ     NOT NULL DEFAULT NOW(),
 
     -- PNR must be globally unique
-    CONSTRAINT uq_bookings_ref UNIQUE (booking_ref),
-
-    -- A seat can only have ONE confirmed booking at a time
-    -- (cancelled ones are kept for history, so we only restrict 'confirmed')
-    CONSTRAINT uq_bookings_seat_confirmed UNIQUE (seat_id, status)
+    CONSTRAINT uq_bookings_ref UNIQUE (booking_ref)
 );
+
+-- A seat can only have ONE confirmed booking at a time.
+-- We use a partial unique index instead of a table-level UNIQUE constraint
+-- so that historical 'cancelled' bookings can be retained in the database
+-- without blocking future re-bookings or cancellations on that same seat.
+CREATE UNIQUE INDEX uq_bookings_seat_confirmed ON bookings (seat_id) WHERE status = 'confirmed';
 
 
 -- =============================================================================

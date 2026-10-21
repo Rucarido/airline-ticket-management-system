@@ -4,11 +4,14 @@
 
 # ── Environment & Secrets ─────────────────────────────────
 .env
-*.env.local
-*.env.*.local
-mvp_blueprint.md
+.env.*
+!.env.example
+
+# ── Local agent/tooling state ─────────────────────────────
 .agents/
+.omo/
 AGENTS.md
+mvp_blueprint.md
 report-proof/
 
 # ── Node.js ──────────────────────────────────────────────
@@ -50,10 +53,9 @@ desktop.ini
 *.sln
 *.sw?
 
-# ── Docker (keep docker-compose.yml tracked) ─────────────
-# docker-compose.override.yml is local-only if you create one
+# ── Local Docker override ─────────────────────────────────
+# Keep docker-compose.yml tracked
 docker-compose.override.yml
-docker-compose.yml
 
 # ── PostgreSQL dumps ──────────────────────────────────────
 *.sql.bak
